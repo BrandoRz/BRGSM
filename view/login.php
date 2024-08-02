@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="content/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="content/css/adminlte.min.css">
-  <link rel="icon" href="data/logo.png">
+  <link rel="icon" href="data/logo1.png">
   <script src="content/jquery/jquery.min.js"></script>
     <script type="text/javascript">
          $(document).ready(function(){
@@ -51,7 +51,7 @@
 
 <div class="login-box">
   <div class="login-logo">
-      <img src="data/logo.png" class="img-responsive" width="70" height="70" />
+      <img src="data/logo1.png" class="img-responsive" width="70" height="70" />
   </div>
   <div class="card">
     <div class="card-body login-card-body">

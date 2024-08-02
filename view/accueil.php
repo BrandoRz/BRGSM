@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 	<link rel="stylesheet" href="content/plugins/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" href="content/plugins/summernote/summernote-bs4.min.css">
-  <link rel="icon" href="data/logo.png">
+  <link rel="icon" href="data/logo1.png">
 
 
   <script src="content/jquery/jquery.min.js"></script>
