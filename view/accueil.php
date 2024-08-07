@@ -193,7 +193,7 @@
                     </p>
                   </a> -->
                   </li>
-                <li class="nav-item" onclick="ChangeIt('fournisseur','stockage','activite','')">
+                <li class="nav-item" onclick="ChangeIt('fournisseur','stockage','activite')">
                   <a class="nav-link">
                   <i class="nav-icon fas fa-user-tie"></i>
                     <p>
@@ -202,7 +202,7 @@
                   </a>
                 </li>
                 </li>
-                <li class="nav-item" onclick="ChangeIt('fournisseur','stockage','activite','')">
+                <li class="nav-item" onclick="ChangeIt('stockage','fournisseur','activite')">
                   <a class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>
@@ -210,7 +210,7 @@
                     </p>
                   </a>
                 </li>
-                <li class="nav-item" onclick="ChangeIt('fournisseur','activite','stockage','')">
+                <li class="nav-item" onclick="ChangeIt('activite','stockage','fournisseur')">
                   <a class="nav-link">
                     <i class="nav-icon fa fa-arrow-circle-right"></i>
                     <p>
@@ -228,7 +228,7 @@
           <span style="display: block;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
           <span style="display: none;" id="stockage"><?php include 'division/stockage.php'; ?></span>
           <span style="display: none;" id="activite"><?php include 'division/activite.php'; ?></span>
-    		</div>
+    	</div>
 
 		<div class="content-wrapper">
 			<span style="display: block;" id="bienvenue"></span>
@@ -255,6 +255,16 @@
 		<script src="content/js/adminlte.js"></script>
 		<script src="content/js/demo.js"></script>
 		<script src="content/js/pages/dashboard.js"></script>
+    <script type="text/javascript">
+      function ChangeIt(id1,id2,id3) {
+        var id1 = document.getElementById(id1)
+        var id2 = document.getElementById(id2)
+        var id3 = document.getElementById(id3)
+        id1.style.display = "block"
+        id2.style.display = "none"
+        id3.style.display = "none"
+      }
+    </script>
 
 
 </body>
