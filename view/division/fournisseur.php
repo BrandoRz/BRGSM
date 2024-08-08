@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Fournisseur</title>
-  <!-- Ajoutez ici les liens vers vos fichiers CSS existants -->
-  <link rel="stylesheet" href="path/to/your/css/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="content-header">
+<div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
@@ -24,7 +12,7 @@
       </div>
     </div>
     <hr>
-  </div>
+</div>
 
   <section class="content">
     <div class="container">
@@ -80,59 +68,4 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      GetListFournisseur('listFournisseur');
-
-      $('#ajouterFournisseurForm').submit(function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize() + '&action=ajouter';
-        $.ajax({
-          type: 'POST',
-          url: 'controller/fournisseur/controller.fournisseur.php',
-          data: formData,
-          success: function(response) {
-            alert(response);
-            $('#ajouterFournisseurModal').modal('hide');
-            GetListFournisseur('listFournisseur');
-          },
-          error: function(xhr, status, error) {
-            alert('Erreur lors de l\'ajout du fournisseur');
-          }
-        });
-      });
-    });
-
-    function GetListFournisseurSearch(valeur) {
-      if (valeur != "") {
-        $.ajax({
-          type: "POST",
-          url: 'controller/fournisseur/controller.fournisseur.php',
-          data: {
-            getFournisseurSearch: valeur,
-          },
-          dataType: "text",
-          success: function(res) {
-            $("#listFournisseur").html(res);
-          },
-          error: function() {
-            alert("Erreur lors de la recherche");
-          }
-        });
-      } else {
-        GetListFournisseur('listFournisseur');
-      }
-    }
-
-    function GetListFournisseur(output) {
-      $.ajax({
-        type: "POST",
-        url: 'controller/fournisseur/controller.fournisseur.php',
-        data: {
-          getFournisseur: 56,
-        },
-        dataType: "text",
-        success: function(res) {
-          $("#" + output).html(res);
-        },
-        error: function
+ 

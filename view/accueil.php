@@ -226,8 +226,8 @@
 
       <div class="content-wrapper">
           <span style="display: block;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
-          <span style="display: none;" id="stockage"><?php include 'division/stockage.php'; ?></span>
-          <span style="display: none;" id="activite"><?php include 'division/activite.php'; ?></span>
+          <span style="display: block;" id="stockage"><?php include 'division/stockage.php'; ?></span>
+          <span style="display: block;" id="activite"><?php include 'division/activite.php'; ?></span>
     	</div>
 
 		<div class="content-wrapper">
@@ -235,6 +235,17 @@
 		    
 		</div>
 </div>
+
+<script type="text/javascript">
+      function ChangeIt(id1,id2,id3) {
+        var id1 = document.getElementById(id1)
+        var id2 = document.getElementById(id2)
+        var id3 = document.getElementById(id3)
+        id1.style.display = "block"
+        id2.style.display = "none"
+        id3.style.display = "none"
+      }
+</script>
 
 		<script src="content/plugins/jquery/jquery.min.js"></script>
 		<script src="content/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -255,16 +266,7 @@
 		<script src="content/js/adminlte.js"></script>
 		<script src="content/js/demo.js"></script>
 		<script src="content/js/pages/dashboard.js"></script>
-    <script type="text/javascript">
-      function ChangeIt(id1,id2,id3) {
-        var id1 = document.getElementById(id1)
-        var id2 = document.getElementById(id2)
-        var id3 = document.getElementById(id3)
-        id1.style.display = "block"
-        id2.style.display = "none"
-        id3.style.display = "none"
-      }
-    </script>
+    
 
 
 </body>
