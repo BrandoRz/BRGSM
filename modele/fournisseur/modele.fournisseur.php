@@ -27,6 +27,13 @@
 			}
 		}
 
+        public function GetFournisseurSearch($search)
+		{
+			$sql = "SELECT * FROM fournisseurs WHERE nom LIKE '%$search%' OR adresse LIKE '%$search%' OR contact LIKE '%$search%'";
+			$recup = $this->bdd->query($sql);
+			return $donne = $recup->fetchall();
+		}
+
         public function GetFournisseurById($id)
 		{
 			$sql = "SELECT * FROM fournisseurs WHERE id_fournisseur=$id";
