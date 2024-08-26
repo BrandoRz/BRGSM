@@ -47,15 +47,17 @@
     </script>
 </head>
 
-<body class="login-page" style="background: #fff;">
+<body class="login-page" style="background: #ADD8E6;">
+<!-- <body class="login-page" style="background-image: url('data/bat.jpg'); background-size: cover; background-repeat: no-repeat;"> -->
+
 
 <div class="login-box">
-  <div class="login-logo">
+  <div class="login-logo" style="background: #ADD8E6;" >
       <img src="data/logo1.png" class="img-responsive" width="70" height="70" />
   </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg text-success">GSM</p>
+      <h4 class="login-box-msg text-success">GSM</h4>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="pseudo" placeholder="Login..."  >
           <div class="input-group-append">
