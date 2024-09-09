@@ -18,16 +18,24 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="card">
-          <div class="card-header d-flex align-items-center">
-            <h3 class="card-title">Liste des </h3>
-          </div>      
+        <div class="card">  
           <div class="card-body">
-            <div class="form-group">
-              <input type="text" placeholder="Recherche Fournisseur" class="form-control" onchange="GetListFournisseurSearch(this.value)">
-            </div>
-            <hr>
-            <div class="row" id="listFournisseur"></div>
+            <table class="table border-none table-striped">
+                <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Date</th>
+                  <th>Produit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>AJOUT</td>
+                  <td>02-02-2025</td>
+                  <td>NomProdut</td>
+                </tr>
+                </tbody>
+              </table>
           </div>      
         </div>
       </div>

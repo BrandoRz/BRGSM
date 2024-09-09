@@ -13,7 +13,12 @@
 	<link rel="stylesheet" href="content/plugins/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" href="content/plugins/summernote/summernote-bs4.min.css">
   <link rel="icon" href="data/logo1.png">
-
+  <style>
+    .content-scroll{
+      height: 350px !important;
+      overflow-y: scroll !important;
+    }
+  </style>
 
   <script src="content/jquery/jquery.min.js"></script>
   <script type="text/javascript">
@@ -234,8 +239,8 @@
 
       <div class="content-wrapper">
           <span style="display: none;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
-          <span style="display: block;" id="stockage"><?php include 'division/stockage.php'; ?></span>
-          <span style="display: none;" id="activite"><?php include 'division/activite.php'; ?></span>
+          <span style="display: none;" id="stockage"><?php include 'division/stockage.php'; ?></span>
+          <span style="display: block;" id="activite"><?php include 'division/activite.php'; ?></span>
           <span style="display: none;" id="service"><?php include 'division/service.php'; ?></span>
     	</div>
 
