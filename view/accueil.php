@@ -193,7 +193,7 @@
                     </p>
                   </a> -->
                   </li>
-                <li class="nav-item" onclick="ChangeIt('fournisseur','stockage','activite')">
+                <li class="nav-item" onclick="ChangeIt('fournisseur','stockage','activite', 'service')">
                   <a class="nav-link">
                   <i class="nav-icon fas fa-user-tie"></i>
                     <p>
@@ -202,7 +202,7 @@
                   </a>
                 </li>
                 </li>
-                <li class="nav-item" onclick="ChangeIt('stockage','fournisseur','activite')">
+                <li class="nav-item" onclick="ChangeIt('stockage','fournisseur','activite', 'service')">
                   <a class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>
@@ -210,9 +210,17 @@
                     </p>
                   </a>
                 </li>
-                <li class="nav-item" onclick="ChangeIt('activite','stockage','fournisseur')">
+                <li class="nav-item" onclick="ChangeIt('service','fournisseur','stockage','activite')">
                   <a class="nav-link">
-                    <i class="nav-icon fa fa-arrow-circle-right"></i>
+                    <i class="nav-icon fas fa-arrow-circle-right"></i>
+                    <p>
+                      Services
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item" onclick="ChangeIt('activite','stockage','fournisseur', 'service')">
+                  <a class="nav-link">
+                    <i class="nav-icon fa fa-history"></i>
                     <p>
                       Activité
                     </p>
@@ -225,9 +233,10 @@
       </aside>
 
       <div class="content-wrapper">
-          <span style="display: block;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
-          <span style="display: none;" id="stockage"><?php include 'division/stockage.php'; ?></span>
+          <span style="display: none;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
+          <span style="display: block;" id="stockage"><?php include 'division/stockage.php'; ?></span>
           <span style="display: none;" id="activite"><?php include 'division/activite.php'; ?></span>
+          <span style="display: none;" id="service"><?php include 'division/service.php'; ?></span>
     	</div>
 
 		<div class="content-wrapper">
@@ -237,13 +246,15 @@
 </div>
 
 <script type="text/javascript">
-      function ChangeIt(id1,id2,id3) {
+      function ChangeIt(id1,id2,id3,id4) {
         var id1 = document.getElementById(id1)
         var id2 = document.getElementById(id2)
         var id3 = document.getElementById(id3)
+        var id4 = document.getElementById(id4)
         id1.style.display = "block"
         id2.style.display = "none"
         id3.style.display = "none"
+        id4.style.display = "none"
       }
 </script>
 
