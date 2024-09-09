@@ -47,12 +47,12 @@
     </script>
 </head>
 
-<body class="login-page" style="background: #ADD8E6;">
+<body class="login-page" style="background: #fff;">
 <!-- <body class="login-page" style="background-image: url('data/bat.jpg'); background-size: cover; background-repeat: no-repeat;"> -->
 
 
 <div class="login-box">
-  <div class="login-logo" style="background: #ADD8E6;" >
+  <div class="login-logo" style="background: #fff;" >
       <img src="data/logo1.png" class="img-responsive" width="70" height="70" />
   </div>
   <div class="card">
