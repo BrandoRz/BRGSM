@@ -23,28 +23,20 @@
             <h3 class="card-title">Ajout produit</h3>
           </div>      
           <div class="card-body">
-              <form action="" class="row">
+              <div action="" class="row">
                 <div class="col-sm-4 form-group">
                   <label>Nom</label>
-                    <input type="text" id="idPerso" class="form-control" placeholder="Nom ...">
+                    <input type="text" id="nomProduit" class="form-control" placeholder="Nom ...">
                 </div>
                 <div class="col-sm-4 form-group">
                   <label>Nombre</label>
-                    <input type="number" id="idPerso" class="form-control" placeholder="Nombre ...">
+                    <input type="number" id="nombreProduit" class="form-control" placeholder="Nombre ...">
                 </div>  
-                <div class="col-sm-4 form-group">
-                  <label>Fournisseur</label>
-                  <select name="" class="form-control" id="">
-                    <option value="">EX Fournisseur</option>
-                    <option value="">EX Fournisseur</option>
-                    <option value="">EX Fournisseur</option>
-                    <option value="">EX Fournisseur</option>
-                  </select>
-                </div>    
-              </form>
+                <div class="col-sm-4 form-group" id="listFournisseurF"></div>    
+              </div>
           </div>      
           <div class="mt-0 card-footer">
-              <button class="btn btn-primary btn-block" >Ajouter</button>
+              <button class="btn btn-primary btn-block" onclick="AddStockage()">Ajouter</button>
             </div>
         </div>
       </div>
@@ -61,21 +53,91 @@
                 <th>Nom</th>
                 <th>Nombre</th>
                 <th>Fournisseur</th>
+                <th>Contact</th>
                 <th>Date d'ajout</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <td>2</td>
-                <td>Entana</td>
-                <td>3</td>
-                <td>MALA</td>
-                <td>025155</td>
-              </tr>
-              </tbody>
+              <tbody id="resultatStock"></tbody>
             </table>
           </div>
       </div>
     </div>
   </div>
 </section>
+
+<script src="content/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+  function AddStockage() {
+    var url = "controller/controllerStockage/controller.stockage.php";
+      if (confirm("Poursuivre l'action ?")) {
+        if ($("#nomProduit").val() != "" || $("#nomProduit").val() != undefined || $("#nombreProduit").val() != "" || $("#nombreProduit").val() != undefined || $("#fournisseurProduit").val() != "" || $("#fournisseurProduit").val() != undefined) {
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: ({
+              nomProduit: $("#nomProduit").val(),
+              nombreProduit: $("#nombreProduit").val(),
+              fournisseurProduit: $("#fournisseurProduit").val(),
+            }),
+            dataType: "text",
+            success: function(res) {
+              if (res == "ok") {
+                $("#nomProduit").val("")
+                $("#nombreProduit").val("")
+                $("#fournisseurProduit").val("")
+                GetAllStockage()
+              }else{
+                alert(res)
+              }
+            },
+            error: function(e) {
+              alert("Erreur")
+              window.location.reload()
+            }
+          });
+        }
+        else{
+          alert("Donnée manquante")
+        }
+      }
+  }
+
+  function GetAllStockage() {
+      var url = "controller/controllerStockage/controller.stockage.php";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: ({
+          getStockage: 'ok',
+        }),
+        dataType: "text",
+        success: function(res) {
+          $("#resultatStock").html(res)
+        },
+        error: function(e) {
+          alert("Erreur")
+          window.location.reload()
+        }
+      });
+  }GetAllStockage()
+
+  function GetAllF() {
+      var url = "controller/controllerFournisseur/controller.fournisseur.php";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: ({
+          getfall: 'ok',
+        }),
+        dataType: "text",
+        success: function(res) {
+          $("#listFournisseurF").html(res)
+        },
+        error: function(e) {
+          alert("Erreur")
+          window.location.reload()
+        }
+      });
+  }GetAllF()
+
+</script>

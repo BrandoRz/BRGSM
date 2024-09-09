@@ -1,4 +1,23 @@
 <?php 
+	if (isset($_POST['getfall'])) {
+        include '../../config/connex.php';
+		include '../../modele/fournisseur/modele.fournisseur.php';    
+		$modeleFournisseur = new Fournisseur();
+        $donne = $modeleFournisseur->GetFournisseur();
+        echo "
+            <label>Fournisseur</label>
+            <select id='fournisseurProduit' class='form-control'>
+        ";
+        foreach ($donne as $key => $value) {
+            echo "
+                <option value='".$value['id']."'>".$value['nom']."</option>
+            ";
+        }
+        echo "
+            </select>
+        ";
+	}
+
 	if (isset($_POST['getFournisseur'])) {
         include '../../config/connex.php';
 		include '../../modele/fournisseur/modele.fournisseur.php';    
@@ -6,7 +25,7 @@
         $donne = $modeleFournisseur->GetFournisseur();
         foreach ($donne as $key => $value) {
             echo "
-                <div class='mb-3 col-sm-3' data-toggle='modal' data-target='#DetailleFournisseur' onclick='GetDetaille(".$value['id_fournisseur'].")'>
+                <div class='mb-3 col-sm-3' data-toggle='modal' data-target='#DetailleFournisseur' onclick='GetDetaille(".$value['id'].")'>
                     <div class='small-box bg-info'>
                     <div class='inner'>
                         <h3>".$value['nom']."</h3>
@@ -60,11 +79,15 @@
     }
 
 	if (isset($_POST['valNom'])) {
-        include '../../config/connex.php';
-		include '../../modele/fournisseur/modele.fournisseur.php';    
-		$modeleFournisseur = new Fournisseur();
-        $modeleFournisseur->AddFournisseur($_POST['valNom'], $_POST['valAdresse'], $_POST['valContact']);
-        echo "ok";
+        try {
+            include '../../config/connex.php';
+            include '../../modele/fournisseur/modele.fournisseur.php';    
+            $modeleFournisseur = new Fournisseur();
+            $modeleFournisseur->AddFournisseur($_POST['valNom'], $_POST['valAdresse'], $_POST['valContact']);
+            echo "ok";
+        } catch (\Throwable $th) {
+            echo "Donnée invalide";
+        }
 	}
 
 

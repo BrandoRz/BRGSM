@@ -133,6 +133,9 @@
             }
           });
         }
+        else{
+          alert("Donnée manquante")
+        }
       }
   }
 

@@ -36,7 +36,7 @@
 
         public function GetFournisseurById($id)
 		{
-			$sql = "SELECT * FROM fournisseurs WHERE id_fournisseur=$id";
+			$sql = "SELECT * FROM fournisseurs WHERE id=$id";
 			$recup = $this->bdd->query($sql);
 			if ($recup==true) {
 				return $donne = $recup->fetch();
