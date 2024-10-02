@@ -12,9 +12,9 @@
 			$this->bdd = $co->connectBD();
 		}
 
-        public function AddService($nom, $produit, $nombre)
+        public function AddService($nom, $person, $produit, $nombre)
 		{
-			$sql = "INSERT INTO envoye_service(nom, produit, nombre, dateService) VALUES('$nom', $produit, $nombre, NOW())";
+			$sql = "INSERT INTO envoye_service(nom, person, produit, nombre, dateService) VALUES('$nom','$person', $produit, $nombre, NOW())";
             $this->bdd->exec($sql);
 		}
 

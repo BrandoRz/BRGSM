@@ -72,11 +72,21 @@
                         <br>
                         Contact : ".$donne['contact']."
                     </small>
+                    <button class='btn btn-danger' onclick='DeleteFournisseur(".$donne['id'].")'><i class='fas fa-trash'></i>r</button>
                     </div>
                 </div>
             ";
         }
     }
+
+    if (isset($_POST['deleteFournisseur'])) {
+        include '../../config/connex.php';
+        include '../../modele/fournisseur/modele.fournisseur.php';    
+        $modeleFournisseur = new Fournisseur();
+        $modeleFournisseur->DeleteFournisseur($_POST['deleteFournisseur']);
+        echo "ok";
+    }
+    
 
 	if (isset($_POST['valNom'])) {
         try {

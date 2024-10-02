@@ -177,6 +177,32 @@
       });
   }
 
+  function DeleteFournisseur(id) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce fournisseur ?")) {
+        var url = "controller/controllerFournisseur/controller.fournisseur.php";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                deleteFournisseur: id,
+            },
+            dataType: "text",
+            success: function(res) {
+                if (res == "ok") {
+                    $('#DetailleFournisseur').modal('hide'); // Fermer la modal
+                    GetAllFournisseur(); // Met à jour la liste des fournisseurs
+                } else {
+                    alert("Erreur lors de la suppression : " + res);
+                }
+            },
+            error: function(e) {
+                alert("Erreur lors de la requête AJAX");
+            }
+        });
+    }
+}
+
+
   function GetAllFournisseur() {
       var url = "controller/controllerFournisseur/controller.fournisseur.php";
       $.ajax({

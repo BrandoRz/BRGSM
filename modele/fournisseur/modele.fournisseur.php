@@ -27,6 +27,12 @@
 			}
 		}
 
+		public function DeleteFournisseur($id) {
+			$sql = "DELETE FROM fournisseurs WHERE id = $id";
+			$this->bdd->exec($sql);
+		}
+		
+
         public function GetFournisseurSearch($search)
 		{
 			$sql = "SELECT * FROM fournisseurs WHERE nom LIKE '%$search%' OR adresse LIKE '%$search%' OR contact LIKE '%$search%'";

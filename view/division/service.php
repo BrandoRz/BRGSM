@@ -39,6 +39,10 @@
             <div class="card-body">
               <form action="" class="row">
                 <div class="col-sm-12 form-group">
+                  <label>Nom de la personne</label>
+                  <input type="text" id="servicePerson" class="form-control" placeholder="Nom ...">
+                </div>
+                <div class="col-sm-12 form-group">
                   <label>Services</label>
                   <input type="text" id="serviceNameProduit" class="form-control" placeholder="Service ...">
                 </div>
@@ -81,11 +85,13 @@
             url: url,
             data: ({
               serviceNameProduit: $("#serviceNameProduit").val(),
+              servicePerson: $("#servicePerson").val(),
             }),
             dataType: "text",
             success: function(res) {
               if (res == "ok") {
                 $("#serviceNameProduit").val("")
+                $("#servicePerson").val("")
                 GetAllPan()
               }else{
                 alert(res)

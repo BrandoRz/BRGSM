@@ -12,19 +12,19 @@
 			$this->bdd = $co->connectBD();
 		}
 
-        public function AddHistorique($action, $name, $produit, $nombreS)
+        public function AddHistorique($action, $name, $person, $produit, $nombreS)
 		{
 			if ($name) {
-				$sql = "INSERT INTO historique(action, serviceName, produit, nombreS, dateH) VALUES('$action', '$name', $produit, $nombreS, NOW())";
+				$sql = "INSERT INTO historique(action, serviceName, person, produit, nombreS, dateH) VALUES('$action', '$name', '$person', $produit, $nombreS, NOW())";
 			}else{
-				$sql = "INSERT INTO historique(action, serviceName, produit, nombreS, dateH) VALUES('$action', NULL, $produit, $nombreS, NOW())";
+				$sql = "INSERT INTO historique(action, serviceName, person, produit, nombreS, dateH) VALUES('$action', NULL, '$person', $produit, $nombreS, NOW())";
 			}
 			$this->bdd->exec($sql);
 		}
 
         public function GetHistorique()
 		{
-			$sql = "SELECT * FROM historique INNER JOIN produit ON historique.id = produit.idP";
+			$sql = "SELECT * FROM historique INNER JOIN produit ON historique.id = produit.idP ORDER BY historique.id DESC";
 			$recup = $this->bdd->query($sql);
 			if ($recup==true) {
 				return $donne = $recup->fetchall();

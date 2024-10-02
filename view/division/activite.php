@@ -25,6 +25,7 @@
                 <tr>
                   <th>Action</th>
                   <th>Service</th>
+                  <th>Responsable</th>
                   <th>Produit</th>
                   <th>Nombre</th>
                   <th>Date</th>

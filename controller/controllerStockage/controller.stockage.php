@@ -9,6 +9,7 @@
                 <tr>
                   <td>".$value['action']."</td>
                   <td>".$value['serviceName']."</td>
+                  <td>".$value['person']."</td>
                   <td>".$value['nomP']."</td>
                   <td>".$value['nombreS']."</td>
                   <td>".$value['dateH']."</td>
@@ -170,9 +171,9 @@
             $modeleService = new Service();
             $donne = $modeleProduit->GetPanier();
             foreach ($donne as $key => $value) {
-                $modeleService->AddService($_POST['serviceNameProduit'], $value['produit'], $value['nombre']);
+                $modeleService->AddService($_POST['serviceNameProduit'], $_POST['servicePerson'], $value['produit'], $value['nombre']);
                 $modeleProduit->UpdateProduct($value['produit'], $value['nombre']);
-                $modeleH-> AddHistorique("ENVOIE PRODUIT", $_POST['serviceNameProduit'], $value['produit'], $value['nombre']);
+                $modeleH-> AddHistorique("ENVOIE PRODUIT", $_POST['serviceNameProduit'], $_POST['servicePerson'], $value['produit'], $value['nombre']);
             }
             $modeleProduit->TruncatePanier();
             echo "ok";
