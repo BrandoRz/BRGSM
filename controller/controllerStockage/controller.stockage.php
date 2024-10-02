@@ -118,7 +118,7 @@
             $modeleH = new Historique();
             $modeleProduit = new Produit();
             $modeleProduit->AddProduit($_POST['nomProduit'], $_POST['fournisseurProduit'], $_POST['nombreProduit']);
-            $modeleH-> AddHistorique("AJOUT PRODUIT", NULL, $_POST['nomProduit'], $_POST['nombreProduit']);
+            $modeleH->AddHistorique("AJOUT PRODUIT", NULL, '', $_POST['nomProduit'], $_POST['nombreProduit']);
             echo "ok";
         } catch (\Throwable $th) {
             echo "Donnée invalide";
@@ -170,13 +170,100 @@
             $modeleH = new Historique();
             $modeleService = new Service();
             $donne = $modeleProduit->GetPanier();
+            $dataPan = "";
+            $somme = 0;
             foreach ($donne as $key => $value) {
                 $modeleService->AddService($_POST['serviceNameProduit'], $_POST['servicePerson'], $value['produit'], $value['nombre']);
                 $modeleProduit->UpdateProduct($value['produit'], $value['nombre']);
                 $modeleH-> AddHistorique("ENVOIE PRODUIT", $_POST['serviceNameProduit'], $_POST['servicePerson'], $value['produit'], $value['nombre']);
+                $dataPan = $dataPan."
+                    <tr>
+                        <td>".$_POST['serviceNameProduit']."</td>
+                        <td>".$value['produit']."</td>
+                        <td>".$value['nombre']."</td>
+                    </tr>
+                ";
+                $somme += $value["nombre"];
             }
             $modeleProduit->TruncatePanier();
-            echo "ok";
+            echo "
+            <div class='col-12' id='pdfFinal'>
+                <div class='invoice p-3 mb-3'>
+                    <div class='row'>
+                        <div class='col-12'>
+                            <h4>
+                                GSM, Facture
+                                <small class='float-right'>Date: ".date('Y-m-d')."</small>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class='row invoice-info'>
+                        <div class='col-sm-4 invoice-col'>
+                            Responsable
+                            <address>
+                                <strong>".$_POST['servicePerson']."</strong><br>
+                            </address>
+                        </div>
+                        <div class='col-sm-4 invoice-col'>
+                            <b>Facture #".'INV-' . uniqid()."</b><br>
+                            <b>Service:</b> DSI<br>
+                        </div>
+                    </div>
+                    <div class='mt-5 row'>
+                        <div class='col-12 table-responsive'>
+                            <table class='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th>Service</th>
+                                        <th>Produit</th>
+                                        <th>Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ".$dataPan."
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-6'>
+                        </div>
+                        <div class='col-6'>
+                            <p class='lead'>Facture ".date('Y-m-d')."</p>
+                            <div class='table-responsive'>
+                                <table class='table'>
+                                    <tbody>
+                                        <tr>
+                                            <th>Total:</th>
+                                            <td>".$somme."</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row no-print'>
+                        <div class='col-12 text-right'>
+                            <label class='mr-5'>Signature</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-12'>
+                <div class='container'>
+                    <div class='card'>
+                        <div class='card-body'>
+                            <button onclick='LoadFacture()' type='button' class='btn btn-block btn-primary float-right' style='margin-right: 5px;'>
+                                PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            
+            ";
         } catch (\Throwable $th) {
             echo "Donnée invalide";
         }

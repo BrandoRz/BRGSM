@@ -14,6 +14,11 @@
     <hr>
 </div>
 
+<section class="content">
+    <div class="container">
+        <div class="row" id="contentPdf"></div>
+    </div>
+</section>
 
 <section class="content">
   <div class="container">
@@ -74,8 +79,28 @@
   </div>
 </section>
 
+<script src="content/pdf/jquery.min.js"></script>
+    <script src="content/pdf/jszip.min.js"></script>
+    <script src="content/pdf/kendo.all.min.js"></script>
 <script src="content/jquery/jquery.min.js"></script>
 <script type="text/javascript">
+  function LoadFacture() {
+        if (confirm("Télécharger le PDF ?")) {
+          var pdfOut = document.getElementById('contentPdf');
+          kendo.drawing
+          .drawDOM("#pdfFinal", 
+          { 
+            paperSize: "A3",
+            margin: { top: "1cm", bottom: "1cm" },
+            scale: 0.8,
+            height: 500
+          })
+          .then(function(group){
+              kendo.drawing.pdf.saveAs(group, "GSM.pdf")
+              pdfOut.style.display = "none";
+          });
+        }
+      }
   function Validation() {
     var url = "controller/controllerStockage/controller.stockage.php";
       if (confirm("Poursuivre l'action ?")) {
@@ -89,13 +114,10 @@
             }),
             dataType: "text",
             success: function(res) {
-              if (res == "ok") {
-                $("#serviceNameProduit").val("")
-                $("#servicePerson").val("")
-                GetAllPan()
-              }else{
-                alert(res)
-              }
+              $("#serviceNameProduit").val("")
+              $("#servicePerson").val("")
+              $("#contentPdf").html(res)
+              GetAllPan()
             },
             error: function(e) {
               alert("Erreur")

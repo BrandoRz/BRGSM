@@ -123,6 +123,7 @@
                 $("#valAdresse").val("")
                 $("#valContact").val("")
                 GetAllFournisseur()
+                location.reload();
               }else{
                 alert(res)
               }

@@ -20,7 +20,7 @@
 
         public function AddPanier($idP)
 		{
-			$sql = "INSERT INTO panier(produit, nombre) VALUES($idP, 0)";
+			$sql = "INSERT INTO panier(produit, nombre) VALUES($idP, 1)";
             $this->bdd->exec($sql);
 		}
 

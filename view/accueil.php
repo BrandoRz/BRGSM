@@ -238,8 +238,8 @@
       </aside>
 
       <div class="content-wrapper">
-          <span style="display: none;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
-          <span style="display: block;" id="stockage"><?php include 'division/stockage.php'; ?></span>
+          <span style="display: block;" id="fournisseur"><?php include 'division/fournisseur.php'; ?></span>
+          <span style="display: none;" id="stockage"><?php include 'division/stockage.php'; ?></span>
           <span style="display: none;" id="activite"><?php include 'division/activite.php'; ?></span>
           <span style="display: none;" id="service"><?php include 'division/service.php'; ?></span>
     	</div>

@@ -86,6 +86,7 @@
                 $("#nombreProduit").val("")
                 $("#fournisseurProduit").val("")
                 GetAllStockage()
+                location.reload()
               }else{
                 alert(res)
               }
