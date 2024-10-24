@@ -67,42 +67,7 @@
 
 <script src="content/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-  function AddStockage() {
-    var url = "controller/controllerStockage/controller.stockage.php";
-      if (confirm("Poursuivre l'action ?")) {
-        if ($("#nomProduit").val() != "" || $("#nomProduit").val() != undefined || $("#nombreProduit").val() != "" || $("#nombreProduit").val() != undefined || $("#fournisseurProduit").val() != "" || $("#fournisseurProduit").val() != undefined) {
-          $.ajax({
-            type: "POST",
-            url: url,
-            data: ({
-              nomProduit: $("#nomProduit").val(),
-              nombreProduit: $("#nombreProduit").val(),
-              fournisseurProduit: $("#fournisseurProduit").val(),
-            }),
-            dataType: "text",
-            success: function(res) {
-              if (res == "ok") {
-                $("#nomProduit").val("")
-                $("#nombreProduit").val("")
-                $("#fournisseurProduit").val("")
-                GetAllStockage()
-                location.reload()
-              }else{
-                alert(res)
-              }
-            },
-            error: function(e) {
-              alert("Erreur")
-              window.location.reload()
-            }
-          });
-        }
-        else{
-          alert("Donnée manquante")
-        }
-      }
-  }
-
+  
   function GetAllStockage() {
       var url = "controller/controllerStockage/controller.stockage.php";
       $.ajax({
@@ -140,5 +105,42 @@
         }
       });
   }GetAllF()
+
+
+  function AddStockage() {
+    var url = "controller/controllerStockage/controller.stockage.php";
+      if (confirm("Poursuivre l'action ?")) {
+        if ($("#nomProduit").val() != "" || $("#nomProduit").val() != undefined || $("#nombreProduit").val() != "" || $("#nombreProduit").val() != undefined || $("#fournisseurProduit").val() != "" || $("#fournisseurProduit").val() != undefined) {
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: ({
+              nomProduit: $("#nomProduit").val(),
+              nombreProduit: $("#nombreProduit").val(),
+              fournisseurProduit: $("#fournisseurProduit").val(),
+            }),
+            dataType: "text",
+            success: function(res) {
+              if (res == "ok") {
+                $("#nomProduit").val("")
+                $("#nombreProduit").val("")
+                $("#fournisseurProduit").val("")
+                GetAllStockage()
+                GetAllStockageService()
+              }else{
+                alert(res)
+              }
+            },
+            error: function(e) {
+              alert("Erreur")
+              window.location.reload()
+            }
+          });
+        }
+        else{
+          alert("Donnée manquante")
+        }
+      }
+  }
 
 </script>

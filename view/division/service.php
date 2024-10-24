@@ -103,6 +103,8 @@
       }
   function Validation() {
     var url = "controller/controllerStockage/controller.stockage.php";
+    var pdfOut = document.getElementById('contentPdf');
+
       if (confirm("Poursuivre l'action ?")) {
         if ($("#serviceNameProduit").val() != "" || $("#serviceNameProduit").val() != undefined) {
           $.ajax({
@@ -114,10 +116,13 @@
             }),
             dataType: "text",
             success: function(res) {
+              pdfOut.style.display = "block";
               $("#serviceNameProduit").val("")
               $("#servicePerson").val("")
               $("#contentPdf").html(res)
               GetAllPan()
+              GetAllHistory()
+              GetAllStockageFromService()
             },
             error: function(e) {
               alert("Erreur")
@@ -130,6 +135,25 @@
         }
       }
   }
+
+  function GetAllStockageFromService() {
+      var url = "controller/controllerStockage/controller.stockage.php";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: ({
+          getStockage: 'ok',
+        }),
+        dataType: "text",
+        success: function(res) {
+          $("#resultatStock").html(res)
+        },
+        error: function(e) {
+          alert("Erreur")
+          window.location.reload()
+        }
+      });
+  }GetAllStockageFromService()
 
   function ChangeNbPanier(idPanier, event) {
     var url = "controller/controllerStockage/controller.stockage.php";
@@ -227,7 +251,7 @@
       });
   }GetAllPan()
 
-  function GetAllStockage() {
+  function GetAllStockageService() {
       var url = "controller/controllerStockage/controller.stockage.php";
       $.ajax({
         type: "POST",
@@ -244,7 +268,7 @@
           window.location.reload()
         }
       });
-  }GetAllStockage()
+  }GetAllStockageService()
 
 
 
